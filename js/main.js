@@ -149,19 +149,15 @@
    /* Masonry
     * ------------------------------------------------------ */
     const ssMasonry = function() {
-        const containerBricks = document.querySelector('.bricks-wrapper');
-        if (!containerBricks) return;
+        // Masonry + imagesLoaded initialization disabled.
+        // Reason: the site now uses a CSS-based grid/flex layout for the .bricks-wrapper
+        // which provides stable row alignment. Initializing Masonry here would
+        // reposition items with absolute positioning and can undo the CSS layout
+        // and add extra runtime cost. If you need Masonry later, re-enable this
+        // block or initialize it conditionally (e.g. only when .bricks-wrapper has
+        // data-masonry="true").
 
-        imagesLoaded(containerBricks, function() {
-
-            const msnry = new Masonry(containerBricks, {
-                itemSelector: '.entry',
-                columnWidth: '.grid-sizer',
-                percentPosition: true,
-                resize: true
-            });
-
-        });
+        return; // no-op
 
     }; // end ssMasonry
 
@@ -297,11 +293,13 @@
     * ------------------------------------------------------ */
     (function ssInit() {
 
-        ssPreloader();
-        ssMobileMenu();
-        ssSearch();
-        ssMasonry();
-        ssSlickSlider();
+    ssPreloader();
+    ssMobileMenu();
+    ssSearch();
+    // Masonry disabled — see ssMasonry comment in this file. We keep the
+    // function in case we want to re-enable it later.
+    // ssMasonry();
+    ssSlickSlider();
         ssAOS();
         ssAlertBoxes();
         ssSmoothScroll();

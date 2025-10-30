@@ -3157,7 +3157,11 @@ button::-moz-focus-inner, input::-moz-focus-inner {
 
 .bricks-wrapper {
     position: relative;
-    margin-top: calc(var(--brick-padding) * -1);
+    /* reset previous negative offset to avoid visual gaps when Masonry is disabled */
+    margin-top: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
 }
 
 .bricks-wrapper .lines {
@@ -3195,12 +3199,65 @@ button::-moz-focus-inner, input::-moz-focus-inner {
 
 .bricks-wrapper .grid-sizer, .bricks-wrapper .brick {
     width: 25%;
+    box-sizing: border-box;
+}
+
+/* When Masonry is not used, hide the empty .grid-sizer placeholder so it
+   doesn't create an empty column. */
+.bricks-wrapper .grid-sizer {
+    display: none;
 }
 
 .bricks-wrapper .brick {
-    float: left;
+    /* Use flex-based item layout so all cards align in rows */
+    float: none;
+    display: flex;
+    flex-direction: column;
     padding: var(--brick-padding) var(--brick-padding) 0;
     border-top: 1px solid var(--color-border);
+    /* Fixed height on desktop to guarantee identical card sizes */
+    height: var(--brick-height, 480px);
+}
+
+/* Make images a fixed-height cropped area so all thumbs match */
+.bricks-wrapper .entry__thumb {
+    overflow: hidden;
+    position: relative;
+    flex: 0 0 auto;
+}
+
+.bricks-wrapper .entry__thumb img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    margin: 0;
+}
+
+.bricks-wrapper .entry__text {
+    /* allow text to take remaining vertical space so cards align */
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+}
+
+.bricks-wrapper .entry__excerpt {
+    /* limit excerpt height to avoid uneven cards */
+    overflow: hidden;
+    max-height: 6.8rem; /* ~3 lines */
+}
+
+/* responsive: two columns on tablets, one on small screens */
+@media screen and (max-width: 1000px) {
+    .bricks-wrapper .grid-sizer, .bricks-wrapper .brick { width: 50%; }
+}
+
+@media screen and (max-width: 600px) {
+    .bricks-wrapper .grid-sizer, .bricks-wrapper .brick { width: 100%; }
+    .bricks-wrapper .brick { height: auto; }
+    .bricks-wrapper .entry__thumb img { height: 180px; }
 }
 
 /* ------------------------------------------------------------------- 

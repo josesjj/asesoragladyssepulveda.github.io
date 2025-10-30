@@ -44,12 +44,17 @@
     <script defer src="js/fontawesome/all.min.js"></script>
    
 
-    <!-- favicons
-    ================================================== -->
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <!-- favicons and PWA manifest (usar images/icons/remaxicon1.png) -->
+    <link rel="apple-touch-icon" sizes="180x180" href="images/icons/remaxicon1.png">
     <link rel="icon" type="image/png" sizes="32x32" href="images/icons/remaxicon1.png">
-
+    <link rel="icon" type="image/png" sizes="16x16" href="images/icons/remaxicon1.png">
+    <link rel="shortcut icon" href="images/icons/remaxicon1.png">
     <link rel="manifest" href="site.webmanifest">
+    <meta name="msapplication-TileImage" content="images/icons/remaxicon1.png">
+    <meta name="theme-color" content="#7a2a2a">
+    <link rel="preload" as="image" href="images/banner1.webp">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 </head>
 
@@ -258,7 +263,7 @@
     
                         <div class="entry__thumb">
                             <a href="#contacto" class="thumb-link">
-                                <img src="images/article2.png" 
+                                <img loading="lazy" src="images/article2.png" 
                                       alt="">
                             </a>
                         </div>
@@ -273,9 +278,7 @@
                                 </div>
                             </div>
                             <div class="entry__excerpt">
-                                <p>
-                                    Tu tranquilidad es mi prioridad. Te ofrezco un trato directo y cercano
-                                </p>
+                                
                             </div>
                         </div>
                     
@@ -285,7 +288,7 @@
         
                         <div class="entry__thumb">
                             <a href="#contacto" class="thumb-link">
-                                <img src="images/banner1.webp" 
+                                <img loading="lazy" src="images/banner1.webp" 
                                     alt="Articulo destacado">
                             </a>
                         </div>
@@ -300,9 +303,7 @@
                                 </div>
                             </div>
                             <div class="entry__excerpt">
-                                <p>
-                                    Con años de experiencia, conozco cada rincón y oportunidad en Táchira. Te guío para que tomes decisiones informadas, rentables y seguras.
-                                </p>
+                               
                             </div>
                         </div>
         
@@ -311,10 +312,10 @@
                     <article class="brick entry" data-aos="fade-up">
     
                         <div class="entry__thumb">
-                            <a href="#contacto" class="thumb-link">
-                                <img src="images/article1.png" 
-                                  alt="">
-                            </a>
+                                                        <a href="#contacto" class="thumb-link">
+                                                                <img loading="lazy" src="images/article1.png" 
+                                                                    alt="">
+                                                        </a>
                         </div>
     
                         <div class="entry__text">
@@ -327,9 +328,7 @@
                                 </div>
                             </div>
                             <div class="entry__excerpt">
-                                <p>
-                                    Me encargo de todo el papeleo, la negociación y los detalles complejos. Mi objetivo es que tu experiencia de compra o venta sea fluida y libre de estrés.
-                                </p>
+                                
                             </div>
                         </div>
                     
@@ -339,7 +338,7 @@
     
                         <div class="entry__thumb">
                             <a href="#contacto" class="thumb-link">
-                                <img src="images/article3.jpg" 
+                                <img loading="lazy" src="images/article3.jpg" 
                                       alt="Articulo Destacado">
                             </a>
                         </div>
@@ -354,9 +353,7 @@
                                 </div>
                             </div>
                             <div class="entry__excerpt">
-                                <p>
-                                    Utilizo estrategias de marketing digital y redes sociales para dar a tu propiedad la máxima visibilidad, llegando a compradores potenciales de forma rápida y efectiva.
-                                </p>
+                                
                             </div>
                         </div>
                     
@@ -366,7 +363,7 @@
         
                         <div class="entry__thumb">
                             <a href="#contacto" class="thumb-link">
-                                <img src="images/article4.jpg"
+                                <img loading="lazy" src="images/article4.jpg"
                                      alt="Articulo Destacado">
                             </a>
                         </div>
@@ -381,9 +378,7 @@
                                 </div>
                             </div>
                             <div class="entry__excerpt">
-                                <p>
-                                    Realizo un análisis comparativo del mercado para asegurar que el precio de tu inmueble sea competitivo y justo, maximizando tus ganancias como vendedor.
-                                </p>
+                                
                             </div>
                         </div>
         
@@ -393,7 +388,7 @@
     
                         <div class="entry__thumb">
                             <a href="#contacto" class="thumb-link">
-                                <img src="images/article5.webp" 
+                                <img loading="lazy" src="images/article5.webp" 
                                      alt="Articulo Destacado">
                             </a>
                         </div>
@@ -408,9 +403,7 @@
                                 </div>
                             </div>
                             <div class="entry__excerpt">
-                                <p>
-                                    Mi red de contactos incluye clientes, inversores y otros profesionales del sector, lo que me permite encontrar al comprador ideal para tu propiedad en menos tiempo.
-                                </p>
+                              
                             </div>
                         </div>
                     
@@ -430,7 +423,7 @@
 
         <div class="row s-about__content">
             <div class="column large-6 medium-12 s-about__content-img" data-aos="fade-up">
-                <img src="images/7.png" alt="Gladys Sepulveda">
+                <img loading="lazy" src="images/7.png" alt="Gladys Sepulveda">
             </div>
 
             <div class="column large-6 medium-12 s-about__content-text" data-aos="fade-up">
@@ -589,9 +582,12 @@
 
     <!-- Java Script
     ================================================== -->
-    <script src="js/jquery-3.5.0.min.js"></script>
-    <script src="js/plugins.js"></script>
-    <script src="js/main.js"></script>
+    <!-- Load scripts with `defer` so they don't block HTML parsing; order is preserved for deferred scripts. -->
+    <script defer src="js/jquery-3.5.0.min.js"></script>
+    <!-- Load only the necessary UI libraries from CDN to reduce the bundle size and avoid shipping unused code. -->
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script defer src="js/main.js"></script>
 
 </body>
 
